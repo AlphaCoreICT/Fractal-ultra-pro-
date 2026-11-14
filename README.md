@@ -174,18 +174,6 @@ Render up to 4 higher timeframes simultaneously without leaving your execution t
 
 ---
 
-## 🔔 Alert System & Automation
-
-Fractal PRO features an integrated alert generator ready for webhooks, Telegram, Discord, or automated execution bots.
-
-### Setting Up Alerts
-1. Right-click anywhere on the chart or click the **Clock Icon** on the right toolbar.
-2. Select **Add Alert**.
-3. Under **Condition**, select **Fractal PRO**.
-4. Select **Any alert() function call**.
-5. Set Expiration to **Open-ended** (if on a supported TradingView tier).
-6. Click **Create**.
-
 ### Standard Alert Payload Format
 ```
 {LTF}-{HTF} {TICKER}: [{Potential}] {Bullish/Bearish} {Model Type}
@@ -195,37 +183,8 @@ Fractal PRO features an integrated alert generator ready for webhooks, Telegram,
 - `5m-60m ES1!: Bullish Candle 4` (C4 continuation expansion)
 - `1m-22.5m EURUSD: Bullish SMT` (Intermarket divergence confirmed)
 - `1m-15m XAUUSD: Potential Bearish Candle 2` (Early live CISD before HTF close)
-
----
-
-## 🏗️ Performance & Architecture
-
-- **AST Token Budget**: Compiled at **~34,891 AST tokens**, safely within TradingView's ~65,000 node budget (over **46% safety headroom**).
-- **Drawing Pool Management (`DrawingBin`)**: Line, box, and label instances are pre-allocated and pooled. Inactive drawings have properties hidden rather than being deleted and re-instantiated, eliminating UI flicker.
-- **Buffer Safety**: All historical array references feature safe bounds (`lookback < 2000`) preventing `max_bars_back` buffer errors.
-- **Dynamic Request Security**: Uses single unified `request.security()` tuple calls with `calc_bars_count = 500`, reducing data transmission overhead by over 95%.
-
----
-
-## 🤝 Contributing & Support
-
-Contributions, feature requests, and bug reports are welcome!
-1. Fork the Project.
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
-
 ---
 
 ## 📄 Disclaimer & License
 
 **Disclaimer**: This software is designed for educational and analytical purposes only. Trading financial markets involves substantial risk of loss and is not suitable for every investor. Past performance is not indicative of future results.
-
-Licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center">
-  <b>Built with precision by the Antigravity Institutional Engineering Team.</b>
-</p>
