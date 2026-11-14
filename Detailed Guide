@@ -1,0 +1,287 @@
+# 📘 Fractal PRO [Ultimate Institutional Edition] — Complete Operational Manual
+
+---
+
+## 📑 Table of Contents
+
+1. [Institutional Trading Philosophy](#1-institutional-trading-philosophy)
+2. [The 4-Candle Core Mechanical Engine](#2-the-4-candle-core-mechanical-engine)
+3. [Change in State of Delivery (CISD) & IC-CISD](#3-change-in-state-of-delivery-cisd--ic-cisd)
+4. [T-Spot Precision Entry System](#4-t-spot-precision-entry-system)
+5. [Universal Multi-Asset SMT Divergence Matrix](#5-universal-multi-asset-smt-divergence-matrix)
+6. [ICT Quarterly Theory & Session Cycles](#6-ict-quarterly-theory--session-cycles)
+7. [Side-by-Side HTF Multi-Timeframe Alignment](#7-side-by-side-htf-multi-timeframe-alignment)
+8. [Formation Liquidity & Standard Deviation Targets](#8-formation-liquidity--standard-deviation-targets)
+9. [Complete Step-by-Step Trading Strategies](#9-complete-step-by-step-trading-strategies)
+10. [Full Input Parameters Reference](#10-full-input-parameters-reference)
+11. [Alerts, Webhooks & Automated Execution](#11-alerts-webhooks--automated-execution)
+12. [Risk Management & Golden Rules](#12-risk-management--golden-rules)
+
+---
+
+## 1. Institutional Trading Philosophy
+
+Traditional retail indicators (RSI, MACD, Moving Averages) calculate lagging mathematical averages of past price. Institutional algorithms, however, do not operate on lagging math — they operate on **Time and Liquidity**:
+
+1. **Liquidity Engineering**: Price is driven beyond key swing highs or lows to trigger stop-loss orders and entice breakout traders. This provides the counterparty volume needed for large institutional orders.
+2. **State Shift (CISD)**: Once liquidity is collected, algorithms shift from a delivery state of expansion to one of re-pricing and opposite expansion.
+3. **Fair Value Re-pricing (T-Spots)**: Smart money re-accumulates or distributes at equilibrium pricing before the main expansion.
+4. **Target Delivery**: Price expands directly into opposing pools of untaken liquidity and standard deviation targets.
+
+**Fractal PRO** turns this exact institutional cycle into an automated, systematic, visual trading system.
+
+---
+
+## 2. The 4-Candle Core Mechanical Engine
+
+Every delivery cycle on the Higher Timeframe (HTF) consists of four logical candles:
+
+```
+               [C1: Liquidity Pool]         [C2: Sweep & Trap]            [C3: CISD & Entry]          [C4: Continuation]
+High Liquidity ─────► ┌──┐                        ┌──┐
+                      │  │                        │  │ ◄── Swing High (C2)
+                      │  │                        │  │ ◄── Sweep Line             ┌──┐                      ┌──┐
+                      └──┘ ◄── Swept Level ─────  └──┘ (Closes inside C1)         │  │ ◄── T-Spot Entry     │  │
+                                                                                  └──┘ (CISD Triggered)     └──┘ (Target Delivery)
+```
+
+### Candle 1 (C1): The Reference Liquidity Pool
+- Represents the preceding HTF candle's extreme high or low.
+- Retail stops rest above C1 highs (buy-stops) and below C1 lows (sell-stops).
+
+### Candle 2 (C2): The Sweep & Trap
+- **The Breach**: Price pushes through C1's extreme.
+- **The Sweep Condition**: C2 wicks beyond C1, but **closes back inside** C1's range on the HTF close.
+- **Visuals**: A horizontal **Sweep Line** is plotted at C1's extreme, and a **C2** label is placed at the swing wick.
+- **Cascading Logic**: If a developing C3 breaches the C2 extreme before a CISD forms, the indicator automatically cancels the old setup and starts a fresh C2 setup from the new extreme without missing a beat.
+
+### Candle 3 (C3): The Confirmation & Execution Window
+- C3 is where order flow changes direction.
+- Evaluates the Lower Timeframe (LTF) **CISD body break**.
+- Plots the **C3 T-Spot Entry Zone**.
+- **Invalidation (`xC2`)**: If price breaches C2's extreme after CISD has triggered, the setup is invalidated. The C2 label changes to a red **xC2**, alerts fire, and all projection and zone markings are automatically stopped.
+
+### Candle 4 (C4): The Continuation & Secondary Entry
+- C4 represents the continuation expansion toward the liquidity draw.
+- Generates a **C4 T-Spot Entry Zone** for traders who missed C3.
+- **Invalidation (`xC4`)**: If C4 trades beyond C3's extreme, the continuation is deemed invalid, printing **xC4** in red and stopping liquidity projections.
+
+---
+
+## 3. Change in State of Delivery (CISD) & IC-CISD
+
+### Main CISD
+- **Detection Algorithm**: Traces back from the C2 swing extreme to find the consecutive opposing candles that generated the final push.
+- **Bullish CISD**: The open of the consecutive red (bearish) candle run leading into the low.
+- **Bearish CISD**: The open of the consecutive green (bullish) candle run leading into the high.
+- **Trigger Rule**: Requires an **LTF candle body close** through the CISD line. A mere wick breach does not trigger confirmation.
+- **Visual**: A solid horizontal line (Blue for Bullish, Red for Bearish) extending 1 bar past the trigger point.
+
+### IC-CISD (Institutional Continuation & Protected Swings)
+- After the main CISD triggers, price forms minor structural swings as it advances through C3 and C4.
+- **3-Candle Swing Algorithm**: Identifies swing points where the middle candle's high/low extends beyond both neighbors.
+- **Protected Swing Dot (`●`)**:
+  - Plots a dot at the swing extreme.
+  - **Color**: Blue for Bullish, Red for Bearish.
+  - **Mitigated / Taken**: If price wicks back through this protected swing, the dot turns **Gray**, signaling that local internal structure was violated.
+- **Trailing Rule**: Traders use active colored dots as dynamic trailing stop-loss anchors.
+
+---
+
+## 4. T-Spot Precision Entry System
+
+The **T-Spot** represents optimal institutional trade location within the HTF candle. It is calculated by mathematically blending three structural levels:
+
+$$\text{T-Spot} = \text{Confluence of } [\text{HTF Open} \longleftrightarrow \text{Equilibrium (EQ)} \longleftrightarrow \text{CISD 50\% Midpoint}]$$
+
+```
+Bearish T-Spot Zone:
+┌──────────────────────────────────────────────┐ ◄── HTF Open (Top of Zone)
+│                                              │
+│               OPTIMAL ENTRY                  │ ◄── Zone Midpoint (Touch Trigger)
+│                                              │
+└──────────────────────────────────────────────┘ ◄── CISD / EQ Boundary (Bottom of Zone)
+```
+
+### The 3-State Machine
+1. **ACTIVE (State 0)**: The T-Spot zone is drawn upon C3 open. Price has not yet retested it.
+2. **TOUCHED (State 1)**: Price retraces and reaches or penetrates the zone midpoint (`(Top + Bottom) / 2`).
+   - If SMT divergence was active on the setup, the label displays `C3 (★ SMT)` in purple.
+3. **CONFIRMED (State 2)**: Price forms a fresh IC-CISD swing *after* touching the zone, confirming institutional rejection out of the T-Spot.
+
+---
+
+## 5. Universal Multi-Asset SMT Divergence Matrix
+
+**Smart Money Technique (SMT)** reveals institutional footprints by comparing non-confirmations between closely correlated or inversely correlated assets.
+
+### Leader vs. Swept Trap Dynamics
+- When market makers manipulate price, they typically sweep liquidity on **one asset** while the **institutional leader** refuses to make a new high/low.
+- **Bearish Example**:
+  - `NQ` makes a **Higher High** (sweeps retail buy stops).
+  - `ES` and `YM` make a **Lower High** (refuse to sweep).
+  - **Result**: `NQ` is the **Swept Trap** (engineered for retail exit liquidity). `ES`/`YM` are the **Institutional Leaders**. Short the trap or short the leader with structural confirmation.
+
+### Automatic Asset Class Resolution
+When set to `SMT Mode: Automatic`, Fractal PRO detects your instrument and binds comparison symbols:
+
+```
+US TECH (NQ/MNQ/US100)       ◄──►  ES (S&P 500)   &  YM (Dow 30)      &  RTY (Russell 2000)
+US S&P (ES/MES/US500)        ◄──►  NQ (Nasdaq)    &  YM (Dow 30)      &  RTY (Russell 2000)
+US DOW (YM/MYM/US30)         ◄──►  ES (S&P 500)   &  NQ (Nasdaq)      &  RTY (Russell 2000)
+EURUSD / 6E                  ◄──►  GBPUSD         &  USDX (Inverted)  &  AUDUSD
+GBPUSD / 6B                  ◄──►  EURUSD         &  USDX (Inverted)  &  EURGBP (Inverted)
+GOLD (XAUUSD / GC)           ◄──►  SILVER (XAGUSD)&  XAUEUR           &  USDX (Inverted)
+BITCOIN (BTCUSD)             ◄──►  ETHUSD         &  SOLUSD           &  TOTAL (Crypto Cap)
+CRUDE OIL (WTI / CL)         ◄──►  QM (Mini WTI)  &  UKOIL (Brent)    &  USDCAD (Inverted)
+```
+
+---
+
+## 6. ICT Quarterly Theory & Session Cycles
+
+Fractal PRO includes a built-in ICT Quarterly Theory timing engine tied to the **18:00 New York True Day** boundary.
+
+### Cycle Types
+- **Micro Cycle (`SESSION_MICRO`)**: 
+  - 22.5-minute quarters designed for 1-minute execution charts.
+  - Active during Asian / London / NY sessions. Automatically counts down to the next session during the Asian micro pause (21:45–00:00 NY).
+- **90-Minute Cycle (`SESSION_90`)**:
+  - 4 quarters of 90 minutes each across every 6-hour market session.
+  - Designed for 3-minute and 5-minute charts.
+- **Daily 6-Hour Sessions (`SESSION_6H`)**:
+  - **Q1 (18:00 - 00:00 NY)**: Asian Session (Accumulation).
+  - **Q2 (00:00 - 06:00 NY)**: London Session (Manipulation / Judas Swing).
+  - **Q3 (06:00 - 12:00 NY)**: New York Session (Distribution / True Expansion).
+  - **Q4 (12:00 - 18:00 NY)**: London Close / NY PM (Reversal or Consolidation).
+
+---
+
+## 7. Side-by-Side HTF Multi-Timeframe Alignment
+
+View up to 4 higher timeframes simultaneously on your chart:
+
+```
+[Price Chart]         [HTF 1 (Aligned)]       [HTF 2]       [HTF 3]       [HTF 4]
+   Candles               e.g. 15m              e.g. 1H       e.g. 4H       e.g. Daily
+     │                      │                     │             │             │
+     │                      │                     │             │             │
+```
+
+- **HTF 1 (Projection)**: Full model interaction (sweeps, CISD, T-Spots, projections).
+- **HTF 2, 3, 4 (Side-by-Side)**: Real-time multi-timeframe candles showing current candle development, historical candles, wicks, interval values (day of week / time), and live countdown timers.
+- **Dynamic Viewport Anchoring**: When you scroll back in history to inspect older price action, the side-by-side candles smoothly reposition to the right edge of your visible screen.
+
+---
+
+## 8. Formation Liquidity & Standard Deviation Targets
+
+### Formation Liquidity
+- Identifies the first two untaken HTF swing points among C1, C0, C-1, and C-2 beyond the C2 extreme.
+- Draws horizontal dotted lines across the chart that terminate immediately when price trades into them (Mitigation).
+
+### Standard Deviation Projections
+- Derived from the swing extreme to the CISD source candle (Wick or Body mode).
+- Standard deviation multiples:
+  - `0.0`: Point 0 (CISD anchor).
+  - `1.0`: Point 1 (Swing extreme).
+  - `-1.0`: First Expansion Target.
+  - `-2.0`: Standard Institutional Profit Target.
+  - `-2.5`: Maximum Terminal Expansion Target.
+
+---
+
+## 9. Complete Step-by-Step Trading Strategies
+
+### Strategy A: The Prime Institutional Reversal (C2 Sweep + SMT + T-Spot)
+
+```
+Checklist:
+[ ] 1. HTF Sweep: Price sweeps C1 high/low and closes inside range (C2 prints).
+[ ] 2. SMT Divergence: Purple line confirms non-confirmation between peer assets.
+[ ] 3. CISD Body Break: LTF candle closes through CISD line (Blue for Bull, Red for Bear).
+[ ] 4. T-Spot Retest: Price enters shaded T-Spot box; label displays C3 (★ SMT).
+[ ] 5. Entry: Limit order at T-Spot midpoint or market entry on IC-CISD dot confirmation.
+[ ] 6. Stop Loss: 1-2 ticks beyond C2 extreme wick.
+[ ] 7. Take Profit: 50% at Formation Liquidity, 50% at -2.0 Standard Deviation level.
+```
+
+### Strategy B: The C4 Trend Continuation
+
+```
+Checklist:
+[ ] 1. C3 Completed: C3 respected C2 extreme and expanded in direction of CISD.
+[ ] 2. C4 Opens: C4 candle begins, plotting C4 T-Spot zone.
+[ ] 3. Retest: Price pulls back into C4 T-Spot.
+[ ] 4. Invalidation Rule: Price must NOT break C3 extreme (otherwise xC4 prints).
+[ ] 5. Entry: Enter in C4 T-Spot in direction of trend.
+[ ] 6. Stop Loss: 1-2 ticks beyond C3 extreme.
+[ ] 7. Take Profit: Opposing HTF swing liquidity.
+```
+
+---
+
+## 10. Full Input Parameters Reference
+
+### General Settings
+- **History**: Number of historical setups to render on chart.
+- **Visible Only**: When ON, only setups belonging to visible HTF candles are rendered.
+- **Fractal Mode**:
+  - `Automatic`: Uses standard higher-timeframe alignment (e.g. 1m $\rightarrow$ 15m, 5m $\rightarrow$ 1H, 15m $\rightarrow$ 4H, 1H $\rightarrow$ 1D).
+  - `Quarterly`: Activates ICT Quarterly Theory session modes (`SESSION_MICRO`, `SESSION_90`, `SESSION_6H`).
+  - `Custom`: Enter any user-defined LTF/HTF pair.
+- **Bias**: `Neutral`, `Bullish`, or `Bearish` filter.
+
+### SMT Divergence Settings
+- **SMT Mode**: `Automatic` (auto-routes correlated pairs) or `Manual`.
+- **Enable Second / Third SMT**: Toggles 3-way correlation matrix.
+- **SMT Line Style / Width / Color**: Customize divergence rendering.
+
+### Side-by-Side HTF Settings (HTF 2, 3, 4)
+- **Show Second / Third / Fourth HTF**: Toggle display of extra timeframes.
+- **Timeframe**: Set desired HTF (e.g. `240` for 4H, `D` for Daily, `W` for Weekly).
+- **Candles**: Number of candles to display (1 to 20).
+- **Gap**: Horizontal spacing in bars between sets.
+- **Vertical Lines**: Toggle session separators on LTF chart.
+
+### Performance Settings
+- **Calculate on Close**: When enabled, live setup detection only runs on candle close (improves execution speed).
+- **Calculation Lookback**: Limits historical scan depth (default: 1,500 bars) for instantaneous chart loading.
+
+---
+
+## 11. Alerts, Webhooks & Automated Execution
+
+### Creating the Alert in TradingView
+1. Open TradingView chart with Fractal PRO applied.
+2. Press `Alt + A` (Windows) or `Option + A` (Mac).
+3. Set **Condition** to `Fractal PRO`.
+4. Set trigger to **Any alert() function call**.
+5. Set frequency to **Once Per Bar Close**.
+
+### Alert Payload Format
+Alert messages are structured systematically for bot parsing:
+```
+{LTF}-{HTF} {TICKER}: [{Potential}] {Bullish/Bearish} {Model Type}
+```
+
+*Payload Examples:*
+- `1m-15m NQ1!: Bearish Candle 2` $\longrightarrow$ Confirmed C2 sweep with CISD trigger.
+- `5m-60m ES1!: Bullish Candle 4` $\longrightarrow$ C4 continuation model active.
+- `1m-22.5m EURUSD: Bullish SMT` $\longrightarrow$ Intermarket SMT divergence detected.
+- `1m-15m NQ1!: Potential Bullish Candle 2` $\longrightarrow$ Early CISD before HTF candle close.
+
+---
+
+## 12. Risk Management & Golden Rules
+
+1. **Never Front-Run C2**: Do not enter while C2 is forming. The HTF candle **must close** back inside C1 to confirm the sweep.
+2. **Body Close Only for CISD**: Wicks through the CISD line do not count. Wait for the LTF bar to close through the level.
+3. **Strict Invalidation (`xC2` / `xC4`)**: If price breaches C2 extreme post-CISD, the trade premise is void. Cut immediately.
+4. **SMT is King**: Setups featuring SMT divergence at the T-Spot (`C3 (★ SMT)`) represent institutional confluence of the highest order.
+
+---
+
+<p align="center">
+  <b>Fractal PRO [Ultimate Institutional Edition] — Precision Engineered for Professional Execution.</b>
+</p>
