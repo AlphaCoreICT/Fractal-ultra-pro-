@@ -1,0 +1,137 @@
+# 📖 Fractal PRO — Trader's Execution Manual & Strategy Guide
+
+This guide explains how to read, interpret, and execute high-probability institutional setups using **Fractal PRO [Ultimate Institutional Edition]**.
+
+---
+
+## 🎯 The Institutional Edge
+
+Fractal PRO is built around a single core market truth: **Markets move from liquidity to liquidity via fractal delivery cycles.**
+
+Large institutions do not buy at arbitrary support or sell at arbitrary resistance. They:
+1. Engineer a **liquidity sweep** (taking retail stops beyond a key high or low).
+2. Shift order-flow direction (**CISD** - Change in State of Delivery).
+3. Re-price into fair value equilibrium (**T-Spot Entry Zones**).
+4. Expand toward opposing **formation liquidity** and **standard deviation targets**.
+
+Fractal PRO visualizes this entire four-stage institutional cycle in real time.
+
+---
+
+## 🧩 The 4-Candle Framework (C1 ➔ C2 ➔ C3 ➔ C4)
+
+Every setup evolves through four distinct higher timeframe (HTF) candles:
+
+```
+    [C1: Swept High]         [C2: Sweep & Trap]            [C3: Entry Zone]          [C4: Continuation]
+          ┌──┐                      ┌──┐
+          │  │                      │  │ ◄── Swing High             ┌──┐                      ┌──┐
+          │  │                      │  │                            │  │ ◄── T-Spot Box       │  │
+          └──┘ ◄── Swept High ───── └──┘ (Closes inside C1)         └──┘ (CISD Confirmed)     └──┘ (Target Expansion)
+```
+
+### 1. Candle 1 (C1) — The Target Pool
+* Represents an established HTF swing high or swing low.
+* This is where buy-stops or sell-stops reside.
+
+### 2. Candle 2 (C2) — The Trap & Sweep
+* Price spikes through C1's extreme, triggering stops and baiting breakout traders.
+* **The Confirmation**: C2 must close back **inside** C1's range.
+* The script plots a **Sweep Line** and tags the extreme swing point as **C2**.
+
+### 3. Candle 3 (C3) — The Trigger & Prime Entry
+* C3 opens. This is your primary execution window.
+* **CISD Level**: The script automatically marks the open of the opposing LTF candle run.
+* **CISD Body Break**: When LTF candle bodies close through the CISD line, institutional shift is confirmed.
+* **C3 T-Spot Zone**: A shaded zone appears combining the HTF Open, Candle 2 Equilibrium (EQ), and the CISD 50% midpoint.
+
+### 4. Candle 4 (C4) — Continuation / Re-entry
+* C4 opens. This is the continuation phase.
+* If price respected C3 and continues expanding, C4 creates a secondary **C4 T-Spot Zone**.
+* Invalidation: If price breaches C3's extreme during C4, the setup labels change to **xC4** (invalidated).
+
+---
+
+## ⚡ The Step-by-Step Execution Playbook
+
+### 🟢 Long Trade Setup (Bullish Reversal)
+
+1. **Sweep of Lows (C2)**:
+   * Current HTF candle dips below previous HTF low (C1 low) and closes back above it.
+   * A black/white sweep line appears at the low.
+2. **SMT Divergence Confirmation (Optional but High-Probability)**:
+   * Look for a purple line between the candles.
+   * Example: Your chart (e.g. NQ) swept lower, but ES or YM formed a Higher Low. This shows institutional accumulation.
+3. **CISD Confirmation**:
+   * Watch for an LTF candle body to close **above** the blue CISD line.
+4. **Enter in the C3 T-Spot**:
+   * As price pulls back into the blue shaded **C3 T-Spot box** (reaching the zone midpoint), the zone state changes to `TOUCHED`.
+   * If SMT was present, the label displays `C3 (★ SMT)`.
+   * Enter long inside the T-Spot zone.
+5. **Stop Loss**:
+   * Placed strictly at the **C2 extreme low**.
+   * If price drops below C2's low after CISD, the setup labels change to **xC2** (aborted).
+6. **Take Profit Targets**:
+   * **Target 1**: Untaken **Formation Liquidity** lines (C1 / C0 highs).
+   * **Target 2**: Standard Deviation Projection levels (`-1`, `-2`, `-2.5`).
+
+---
+
+### 🔴 Short Trade Setup (Bearish Reversal)
+
+1. **Sweep of Highs (C2)**:
+   * Current HTF candle pushes above previous HTF high (C1 high) and closes back below it.
+   * Sweep line appears at the high.
+2. **SMT Divergence Confirmation**:
+   * Example: NQ made a Higher High, while ES or YM made a Lower High (Institutional Leader).
+3. **CISD Confirmation**:
+   * LTF candle body closes **below** the red CISD line.
+4. **Enter in the C3 T-Spot**:
+   * Price pulls back up into the red shaded **C3 T-Spot box**.
+   * Enter short within the T-Spot zone.
+5. **Stop Loss**:
+   * Placed strictly at the **C2 extreme high**.
+6. **Take Profit Targets**:
+   * **Target 1**: Untaken Formation Liquidity lines (C1 / C0 lows).
+   * **Target 2**: Standard Deviation Projections (`-1`, `-2`, `-2.5`).
+
+---
+
+## 🔍 Understanding On-Chart Visuals
+
+| Visual Element | Color / Appearance | Meaning |
+|---|---|---|
+| **C2 Label** | Neutral text at swing | Confirmed sweep candle swing extreme. |
+| **xC2 Label** | Bright Red | Setup invalidated — price breached C2 extreme after CISD. |
+| **Sweep Line** | Solid line across wicks | Price level where C1 liquidity was swept. |
+| **CISD Line** | Blue (Bull) / Red (Bear) | Institutional Change in State of Delivery level. |
+| **IC-CISD Dot (`●`)** | Blue / Red (Turns Gray) | Protected swing structure point. Turns gray once taken. |
+| **T-Spot Box** | Shaded Rectangle | High-probability entry zone (HTF Open + EQ + CISD 50%). |
+| **C3 (★ SMT)** | Purple Label | Ultra high-probability confluence: SMT active at entry zone. |
+| **xC4 Label** | Bright Red | C4 continuation failed (breached C3 extreme). |
+| **Dotted Level** | Horizontal dotted line | Untaken formation liquidity target. |
+| **Projections** | Labeled deviation levels | Institutional standard deviation expansion targets. |
+
+---
+
+## ⏱️ Recommended Timeframe Pairings
+
+Select the pairing that matches your trading style in the **Fractal Mode** setting:
+
+| Style | Execution (Chart TF) | Higher Timeframe (HTF) | Mode Setting |
+|---|---|---|---|
+| **Ultra-Fast Scalping** | 15-Second | 1-Minute or 5-Minute | `15s-5m` or `Quarterly` |
+| **Day Trading (Micro Cycles)** | 1-Minute | 22.5-Minute Micro Quarter | `Quarterly` |
+| **Day Trading (Standard)** | 1-Minute or 5-Minute | 15-Minute or 1-Hour | `1m-15m` / `5m-1H` |
+| **Session Trading** | 15-Minute | 4-Hour or 6-Hour | `15m-4H` / `90m-6H` |
+| **Swing Trading** | 1-Hour | Daily (1D) | `1H-1D` |
+| **Macro Position** | 4-Hour or Daily | Weekly or Monthly | `4H-1W` / `1D-1M` |
+
+---
+
+## 🛡️ Risk Management Rules
+
+1. **Never front-run the sweep**: Always wait for C2 to close back inside the range before preparing an entry.
+2. **Respect the CISD body break**: Wicking through a CISD level is not enough; wait for an LTF candle body close.
+3. **Cut on xC2 / xC4**: If an invalidation label prints, institutional sponsorship has failed. Exit immediately.
+4. **Use SMT as your filter**: Trades with SMT divergence (`★ SMT`) have significantly higher win rates than isolated sweeps.
